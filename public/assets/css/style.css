@@ -3,9 +3,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 
 .welcome-title a {
     text-decoration: none;
+    width: 30%;
     color: black;
 }
