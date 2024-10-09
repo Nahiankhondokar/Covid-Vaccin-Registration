@@ -19,7 +19,7 @@
                 <a href="{{route('covid.register')}}" class="bg-info fs-3 fw-bold rounded">
                     Covid Vaccin Registration
                 </a>
-                <a href="" class="bg-primary text-white fs-3 fw-bold rounded">
+                <a href="{{route('covid.search')}}" class="bg-primary text-white fs-3 fw-bold rounded">
                     Check Vaccination Process
                 </a>
             </div>

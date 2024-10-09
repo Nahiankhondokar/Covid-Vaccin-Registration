@@ -24,3 +24,11 @@
     width: 30%;
     color: black;
 }
+
+.vaccin-status {
+    text-align: center;
+    margin: 2rem;
+    color: green;
+    font-weight: bold;
+    font-size: 20px;
+}

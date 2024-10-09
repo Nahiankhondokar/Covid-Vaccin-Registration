@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container mt-3 mb-3">
         {{-- Header section --}}
         @include('layouts.header')
 
