@@ -14,6 +14,12 @@
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
     <body>
-       
+        <main>
+            <div class="container text-center m-auto w-100 welcome-title">
+                <a href="" class="bg-info fs-2 w-50 p-2 fw-bold rounded">
+                    Covid Vaccin Registration
+                </a>
+            </div>
+        </main>
     </body>
 </html>
