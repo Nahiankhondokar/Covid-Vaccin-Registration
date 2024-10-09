@@ -4,7 +4,7 @@
 <div class="user-store w-50 m-auto border p-2 mt-5">
     <h4 class="text-center fw-bold mt-1 mb-1">User Registration</h4>
     <hr class="w-50 text-center m-auto mb-2">
-    <form method="POST" action="">
+    <form method="POST" action="{{route('covid.store')}}">
         @csrf
         <div class="mb-3">
           <label class="form-label">Name <span class="text-danger">*</span></label>
@@ -40,14 +40,14 @@
 
           <div class="mb-3">
             <label class="form-label">Vaccin Center <span class="text-danger">*</span></label>
-            <select name="vaccin_center" id="" class="block mt-1 form-control">
+            <select name="vaccin_center_id" id="" class="block mt-1 form-control">
                 <option value="">--Select--</option>
                 {{-- @foreach ($routes as $route)
                 <option value="{{$route->id}}">{{$route->name}}</option>
                 @endforeach --}}
             </select>
-              @if($errors->has('vaccin_center'))
-                  <div class="error text-danger">{{ $errors->first('vaccin_center') }}</div>
+              @if($errors->has('vaccin_center_id'))
+                  <div class="error text-danger">{{ $errors->first('vaccin_center_id') }}</div>
               @endif
           </div>
 
