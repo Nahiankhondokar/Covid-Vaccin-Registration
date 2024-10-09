@@ -10,6 +10,11 @@ class RegistrationController extends Controller
 {
     public function index():View
     {
-        return view('covid.index');
+        return view('covid.register');
+    }
+    
+    public function search():View
+    {
+        return view('covid.search');
     }
 }

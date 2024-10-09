@@ -10,16 +10,13 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <main>
-        <div class="container text-center m-auto w-100 welcome-title">
-            <a href="" class="bg-info fs-3 fw-bold rounded">
-                Covid Vaccin Registration
-            </a>
-            <a href="" class="bg-primary text-white fs-3 fw-bold rounded">
-                Check Vaccination Process
-            </a>
-        </div>
-        
-    </main>
+
+    <div class="container">
+        {{-- Header section --}}
+        @include('layouts.header')
+
+        @yield('content')
+    </div>
+
 </body>
 </html>
