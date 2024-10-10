@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('vaccin_center_id');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('phone');
+            $table->string('nid_no');
+            $table->integer('vaccin_doz');
+            $table->date('vaccin_date');
+            $table->string('vaccin_status')->default('Scheduled');
             $table->timestamps();
         });
 
