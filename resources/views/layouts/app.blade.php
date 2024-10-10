@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <div class="container mt-3 mb-3 bg-dark">
+    <div class="container mt-3 mb-3">
         {{-- Success or error message section --}}
         @if(session('success'))
             <br>

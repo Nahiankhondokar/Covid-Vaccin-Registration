@@ -24,7 +24,7 @@ class RegistrationController extends Controller
         return view('covid.search');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(UserStoreRequest $request): RedirectResponse
     {
         $vaccinCenterDozCapacity = VaccinCenter::query()
             ->select('id','name', 'doz_limit_per_day')
