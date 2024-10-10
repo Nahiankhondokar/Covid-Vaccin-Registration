@@ -28,7 +28,7 @@ class UserStoreRequest extends FormRequest
             'name'      => ['required', 'string', 'max:255'],
             'email'     => ['required', 'string', 'email', 'max:100', 'unique:users,email'], 
             'phone'     => ['required', 'string', 'min:10', 'max:15', 'regex:/^[0-9]+$/', 'unique:users,phone'], 
-            'nid_no'    => ['required', 'integer', 'max:20', 'regex:/^[0-9]+$/', 'unique:users,nid_no'],
+            'nid_no'    => ['required', 'integer', 'regex:/^[0-9]+$/', 'unique:users,nid_no'],
             'vaccin_date' => [
                 'required',
                 'date',

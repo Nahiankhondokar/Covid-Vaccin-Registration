@@ -42,9 +42,9 @@
             <label class="form-label">Vaccin Center <span class="text-danger">*</span></label>
             <select name="vaccin_center_id" id="" class="block mt-1 form-control">
                 <option value="">--Select--</option>
-                {{-- @foreach ($routes as $route)
-                <option value="{{$route->id}}">{{$route->name}}</option>
-                @endforeach --}}
+                @foreach ($centers as $center)
+                <option value="{{$center->id}}">{{$center->name}}</option>
+                @endforeach
             </select>
               @if($errors->has('vaccin_center_id'))
                   <div class="error text-danger">{{ $errors->first('vaccin_center_id') }}</div>
@@ -54,6 +54,7 @@
           <div class="mb-3">
             <label class="form-label">Vaccin Date <span class="text-danger">*</span></label>
             <input type="date" class="form-control" name="vaccin_date" value="{{ old('vaccin_date') }}">
+            <small>Only Sunday or Thursday</small>
               @if($errors->has('vaccin_date'))
                   <div class="error text-danger">{{ $errors->first('vaccin_date') }}</div>
               @endif

@@ -11,7 +11,22 @@
 </head>
 <body>
 
-    <div class="container mt-3 mb-3">
+    <div class="container mt-3 mb-3 bg-dark">
+        {{-- Success or error message section --}}
+        @if(session('success'))
+            <br>
+                <div class="alert alert-success alert-dismissible fade show m-auto w-50" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show m-auto w-50" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
         {{-- Header section --}}
         @include('layouts.header')
 
