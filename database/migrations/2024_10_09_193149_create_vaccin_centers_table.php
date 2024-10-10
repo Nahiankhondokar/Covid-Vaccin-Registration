@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('vaccin_centers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('location');
+            $table->integer('doz_limit_per_day');
             $table->timestamps();
         });
     }

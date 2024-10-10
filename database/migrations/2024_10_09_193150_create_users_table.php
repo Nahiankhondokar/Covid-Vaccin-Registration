@@ -16,18 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('vaccin_center_id');
             $table->string('email')->unique();
-            $table->string('phone');
-            $table->string('nid_no');
+            $table->string('phone')->unique();
+            $table->string('nid_no')->unique();
             $table->integer('vaccin_doz');
             $table->date('vaccin_date');
-            $table->string('vaccin_status')->default('Scheduled');
+            $table->enum('vaccin_status', ['Registration', 'Not Scheduled', 'Scheduled', 'Vaccinated'])->default('Not Scheduled');
             $table->timestamps();
-        });
-
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
         });
 
         Schema::create('sessions', function (Blueprint $table) {
@@ -46,7 +40,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
 };
