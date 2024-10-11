@@ -29,13 +29,13 @@ class UserStoreRequest extends FormRequest
             'email'     => ['required', 'string', 'email', 'max:100', 'unique:users,email'], 
             'phone'     => ['required', 'string', 'min:10', 'max:15', 'regex:/^[0-9]+$/', 'unique:users,phone'], 
             'nid_no'    => ['required', 'integer', 'regex:/^[0-9]+$/', 'unique:users,nid_no'],
+            'vaccin_center_id' => ['required', 'integer', 'exists:vaccin_centers,id'],
             'vaccin_date' => [
                 'required',
                 'date',
                 'after_or_equal:today',
                 new SundayOrThursday(),
             ],
-            'vaccin_center_id' => ['required', 'integer', 'exists:vaccin_centers,id'],
         ];
     }
 

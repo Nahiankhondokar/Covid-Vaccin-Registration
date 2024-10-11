@@ -26,14 +26,16 @@ class RegistrationController extends Controller
 
     public function store(UserStoreRequest $request): RedirectResponse
     {
-        $vaccinCenterDozCapacity = VaccinCenter::query()
+        $vaccinCenter = VaccinCenter::query()
             ->select('id','name', 'doz_limit_per_day')
-            ->withCount('users')
+            ->withCount('users') // booked for vaccin
             ->find($request->vaccin_center_id);
 
-        $availableDozCapacity = $vaccinCenterDozCapacity->doz_limit_per_day - $vaccinCenterDozCapacity->users_count;
+
+        $vaccinCenterDozCapacity = $vaccinCenter->doz_limit_per_day;
+        $availableDozCapacity = $vaccinCenterDozCapacity - $vaccinCenter->users_count;
         
-        $dayOfWeek = Carbon::parse($request->vaccin_date,)->format('l');
+        $vaccinDate = Carbon::parse($request->vaccin_date,)->format('M d Y');
         
         if($availableDozCapacity > 0){
             User::query()->create([
@@ -46,10 +48,9 @@ class RegistrationController extends Controller
                 'vaccin_center_id'=> $request->vaccin_center_id,
             ]);
             
-            return redirect()->back()->with('success', "Registration successfull for $dayOfWeek");
+            return redirect()->back()->with('success', "Registration successfull for $vaccinDate");
         }else {
-            return redirect()->back()->with('error', "This $vaccinCenterDozCapacity->name has not enough doz for $dayOfWeek");
+            return redirect()->back()->with('error', "This $vaccinCenterDozCapacity->name has not enough doz for this $vaccinDate date");
         }
-        
     }
 }
