@@ -27,4 +27,7 @@ This project is for covid vaccination registration form, anyone can register her
 ## SMS send for user notification along with email
 We can also send SMS along with an email to remind users. We have to integrate third part API for sending sms like `reve or elitbuzz` etc. We need to define a service class for implement this API & other configurations. We can set our important credentials in the env or config file. after setup all the things just need to call the service class in the `ReminderForVaccination` file while i am sending an email.
 
+if i miss something i am happy to listen from you. Kahaf is a great idea to change the world.
+Thank you.
+
 
