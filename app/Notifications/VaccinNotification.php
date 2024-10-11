@@ -6,15 +6,16 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Log;
 
-class VaccinNotification extends Notification
+class VaccinNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(private object $user)
     {
         //
     }
@@ -34,16 +35,10 @@ class VaccinNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        // return (new MailMessage)
-        //             ->line('The introduction to the notification.')
-        //             ->action('Notification Action', url('/'))
-        //             ->line('Thank you for using our application!');
-
-                    return (new MailMessage())
-                    ->markdown('email.vaccin')
-                    ->with([
-                        'user'     => 'Nahian',
-                    ]);
+        return (new MailMessage())
+        ->view('email.vaccin', [
+            'user' => $this->user,
+        ]);
     }
 
     /**

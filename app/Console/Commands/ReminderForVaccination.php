@@ -3,8 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
-use App\Notifications\vaccinNotification;
+use App\Notifications\VaccinNotification;
 use Illuminate\Console\Command;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Notification;
 
 class ReminderForVaccination extends Command
@@ -28,9 +29,15 @@ class ReminderForVaccination extends Command
      */
     public function handle()
     {
-        $users = User::with('vaccinCenter')->get();
+        $users = User::with('vaccin_center')->get();
+        
         foreach($users as $user){
-            Notification::send($user, new vaccinNotification($user));
+            $previousDay = Carbon::parse($user->vaccin_date)->subDay();
+            $previousDayTime = Carbon::parse($user->vaccin_date)->subDay()->setTime(21, 00)->format('H:i');
+
+            if($previousDay == Carbon::today() && date("H:i") == $previousDayTime){
+                Notification::send($user, new VaccinNotification($user)); 
+            }
         }
 
         $this->info('Vaccination remiders are completed');

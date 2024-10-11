@@ -44,7 +44,7 @@ class User extends Authenticatable
     }
 
     // Vaccin center
-    public function vaccinCenter(): BelongsTo
+    public function vaccin_center(): BelongsTo
     {
         return $this->belongsTo(VaccinCenter::class);
     }
