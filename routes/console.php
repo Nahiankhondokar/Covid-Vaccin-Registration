@@ -8,12 +8,11 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote')->hourly();
 
-
-Schedule::command('user:vaccinated')
+Schedule::command('vaccin-date:distribute')
 ->daily()
 ->withoutOverlapping();
 
-Schedule::command('vaccin-date:distribute')
+Schedule::command('user:vaccinated')
 ->daily()
 ->withoutOverlapping();
 

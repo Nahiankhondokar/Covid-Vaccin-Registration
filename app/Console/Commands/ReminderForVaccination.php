@@ -31,13 +31,15 @@ class ReminderForVaccination extends Command
     {
         $users = User::with('vaccin_center')->get();
         
-        foreach($users as $user){
-            $previousDay = Carbon::parse($user->vaccin_date)->subDay();
-            $previousDayTime = Carbon::parse($user->vaccin_date)->subDay()->setTime(21, 00)->format('H:i');
+        foreach($users as $key => $user){
+           if($user->vaccin_date){
+                $previousDay = Carbon::parse($user->vaccin_date)->subDay();
+                $previousDayTime = Carbon::parse($user->vaccin_date)->subDay()->setTime(21, 00)->format('H:i');
 
-            if($previousDay == Carbon::today() && date("H:i") == $previousDayTime){
-                Notification::send($user, new VaccinNotification($user)); 
-            }
+                if($previousDay == Carbon::today() && date("H:i") == $previousDayTime){
+                    Notification::send($user, new VaccinNotification($user)); 
+                }
+           }
         }
 
         $this->info('Vaccination remiders are completed');

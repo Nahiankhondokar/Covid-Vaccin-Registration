@@ -33,10 +33,10 @@ class VaccinDateDistribute extends Command
         ->get();
 
         foreach($users as $user){
-
             $nextDate = $this->getNextDate($user);
             if($nextDate){
                 $user->vaccin_date = $nextDate->format('Y-m-d');
+                $user->vaccin_status = 'Scheduled';
                 $user->update();
             }
         }
