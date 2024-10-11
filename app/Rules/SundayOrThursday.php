@@ -18,7 +18,7 @@ class SundayOrThursday implements ValidationRule
         $dayOfWeek = Carbon::parse($value)->format('l');
 
         if (!in_array($dayOfWeek, ['Sunday', 'Thursday'])) {
-            $fail("The $attribute must be a Sunday or Thursday.");
+            $fail("The vaccin date must be a Sunday or Thursday.");
         }
     }
 }

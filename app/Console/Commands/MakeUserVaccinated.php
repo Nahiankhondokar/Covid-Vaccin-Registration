@@ -28,10 +28,10 @@ class MakeUserVaccinated extends Command
      */
     public function handle()
     {
-        $vaccinatedDate = Carbon::now()->subDays(7)->format('Y-m-d');
+        $today = Carbon::now()->format('Y-m-d');
 
         User::where('vaccin_status', '!=', 'Vaccinated')
-            ->whereDate('vaccin_date', '=', $vaccinatedDate)
+            ->whereDate('vaccin_date', '=', $today)
             ->update(['vaccin_status' => 'Vaccinated']);
 
         $this->info('Users are vaccinated');

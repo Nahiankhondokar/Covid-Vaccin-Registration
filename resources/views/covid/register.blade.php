@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if(session('status'))
+    <div class="vaccin-status text-danger">{{ session('status') }}</div>
+@endif
 <div class="user-store w-50 m-auto border p-2 mt-5">
     <h4 class="text-center fw-bold mt-1 mb-1">User Registration</h4>
     <hr class="w-50 text-center m-auto mb-2">

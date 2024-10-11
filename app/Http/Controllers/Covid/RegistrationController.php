@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Covid;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CheckVaccinStatusRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
 use App\Models\VaccinCenter;
@@ -52,5 +53,19 @@ class RegistrationController extends Controller
         }else {
             return redirect()->back()->with('error', "This $vaccinCenterDozCapacity->name has not enough doz for this $vaccinDate date");
         }
+    }
+
+    public function vaccinStatus(CheckVaccinStatusRequest $request)
+    {
+       $user = User::query()
+       ->select('id', 'nid_no', 'vaccin_status')
+       ->where('nid_no', $request->nid_no)
+       ->first();
+
+       if(!$user){
+        return redirect()->route('covid.register')->with('status', 'Not registered');
+       }
+
+       return redirect()->back()->with('status', $user->vaccin_status);
     }
 }
