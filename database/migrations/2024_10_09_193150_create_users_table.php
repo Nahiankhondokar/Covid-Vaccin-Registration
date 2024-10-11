@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nid_no')->unique();
             $table->integer('vaccin_doz');
             $table->date('vaccin_date');
-            $table->enum('vaccin_status', ['Registration', 'Not Scheduled', 'Scheduled', 'Vaccinated'])->default('Not Scheduled');
+            $table->enum('vaccin_status', ['Not registered', 'Not Scheduled', 'Scheduled', 'Vaccinated'])->default('Not Scheduled');
             $table->timestamps();
         });
 

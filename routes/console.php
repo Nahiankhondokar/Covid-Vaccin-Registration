@@ -10,6 +10,10 @@ Artisan::command('inspire', function () {
 
 
 
+Schedule::command('user:vaccinated')
+->daily()
+->withoutOverlapping();
+
 Schedule::command('reminder:vaccination')
-->everyMinute()
+->hourly()
 ->withoutOverlapping();
