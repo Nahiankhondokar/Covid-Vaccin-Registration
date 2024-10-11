@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('nid_no')->unique();
-            $table->integer('vaccin_doz');
-            $table->date('vaccin_date');
-            $table->enum('vaccin_status', ['Not registered', 'Not scheduled', 'Scheduled', 'Vaccinated'])->default('Scheduled');
+            $table->integer('vaccin_doz')->default(1);
+            $table->date('vaccin_date')->nullable();
+            $table->enum('vaccin_status', ['Not registered', 'Not scheduled', 'Scheduled', 'Vaccinated'])->default('Not scheduled');
             $table->timestamps();
         });
 

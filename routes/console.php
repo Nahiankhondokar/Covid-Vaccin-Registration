@@ -9,8 +9,11 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote')->hourly();
 
 
-
 Schedule::command('user:vaccinated')
+->daily()
+->withoutOverlapping();
+
+Schedule::command('vaccin-date:distribute')
 ->daily()
 ->withoutOverlapping();
 

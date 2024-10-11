@@ -27,32 +27,15 @@ class RegistrationController extends Controller
 
     public function store(UserStoreRequest $request): RedirectResponse
     {
-        $vaccinCenter = VaccinCenter::query()
-            ->select('id','name', 'doz_limit_per_day')
-            ->withCount('users') // booked for vaccin
-            ->find($request->vaccin_center_id);
-
-
-        $vaccinCenterDozCapacity = $vaccinCenter->doz_limit_per_day;
-        $availableDozCapacity = $vaccinCenterDozCapacity - $vaccinCenter->users_count;
-        
-        $vaccinDate = Carbon::parse($request->vaccin_date,)->format('M d Y');
-        
-        if($availableDozCapacity > 0){
-            User::query()->create([
-                'name'          => $request->name,
-                'email'         => $request->email,
-                'phone'         => $request->phone,
-                'vaccin_date'   => $request->vaccin_date,
-                'nid_no'        => $request->nid_no,
-                'vaccin_doz'    => 1,
-                'vaccin_center_id'=> $request->vaccin_center_id,
-            ]);
+        User::query()->create([
+            'name'          => $request->name,
+            'email'         => $request->email,
+            'phone'         => $request->phone,
+            'nid_no'        => $request->nid_no,
+            'vaccin_center_id'=> $request->vaccin_center_id,
+        ]);
             
-            return redirect()->back()->with('success', "Registration successfull for $vaccinDate");
-        }else {
-            return redirect()->back()->with('error', "This $vaccinCenterDozCapacity->name has not enough doz for this $vaccinDate date");
-        }
+        return redirect()->back()->with('success', "Registration successfull");
     }
 
     public function vaccinStatus(CheckVaccinStatusRequest $request)

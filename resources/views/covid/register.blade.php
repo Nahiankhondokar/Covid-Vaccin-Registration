@@ -55,14 +55,14 @@
               @endif
           </div>
 
-          <div class="mb-3">
+          {{-- <div class="mb-3">
             <label class="form-label">Vaccin Date <span class="text-danger">*</span></label>
             <input type="date" class="form-control" name="vaccin_date" value="{{ old('vaccin_date') }}">
             <small>Only Sunday or Thursday</small>
               @if($errors->has('vaccin_date'))
                   <div class="error text-danger">{{ $errors->first('vaccin_date') }}</div>
               @endif
-          </div>
+          </div> --}}
           
         <button type="submit" class="btn btn-primary text-center m-auto d-block">Submit</button>
     </form>
