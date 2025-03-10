@@ -3,14 +3,6 @@
 * Create .env file & connect mysql database.
 * .env file updates `QUEUE_CONNECTION=database`, `APP_TIMEZONE=Asia/Dhaka`,
 * Email credentials for sending email add-in .env
-  ` MAIL_MAILER=smtp
-    MAIL_HOST=smtp.gmail.com
-    MAIL_PORT=587
-    MAIL_USERNAME=emaildefaultemail@gmail.com
-    MAIL_PASSWORD=xcwhzagiibbbhypu
-    MAIL_ENCRYPTION=tls
-    MAIL_FROM_ADDRESS="emaildefaultemail@gmail.com"
-    MAIL_FROM_NAME="${APP_NAME}"`
 * composer install
 * npm install
 * npm run dev
